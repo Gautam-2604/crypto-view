@@ -9,6 +9,7 @@ import {
 import Categories from '@/components/home/Categories';
 
 const Page = async () => {
+  
   return (
     <main className="main-container">
       <section className="home-grid">
