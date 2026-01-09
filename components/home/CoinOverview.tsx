@@ -14,16 +14,13 @@ const CoinOverview = async () => {
       fetcher<OHLCData[]>('/coins/bitcoin/ohlc', {
         vs_currency: 'usd',
         days: 1,
-        interval: 'hourly',
         precision: 'full',
       }),
     ]);
 
     return (
       <div id="coin-overview">
-        <CandlestickChart data={coinOHLCData} coinId="bitcoin" liveInterval={'1s'} setLiveInterval={function (interval: '1s' | '1m'): void {
-                throw new Error('Function not implemented.');
-            } }>
+        <CandlestickChart data={coinOHLCData} coinId="bitcoin">
           <div className="header pt-2">
             <Image src={coin.image.large} alt={coin.name} width={56} height={56} />
             <div className="info">
