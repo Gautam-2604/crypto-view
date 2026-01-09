@@ -15,11 +15,19 @@ export async function fetcher<T>(
 ): Promise<T> {
   const url = qs.stringifyUrl(
     {
-      url: `${BASE_URL}/${endpoint}`,
+      url: `${BASE_URL}${endpoint}`,
       query: params,
     },
     { skipEmptyString: true, skipNull: true },
   );
+  console.log("BASEURL", BASE_URL);
+  console.log("URL", url);
+  console.log('endpoint', endpoint);
+  console.log("Params", params);
+  
+  
+  
+  
 
   const response = await fetch(url, {
     headers: {
@@ -28,6 +36,8 @@ export async function fetcher<T>(
     } as Record<string, string>,
     next: { revalidate },
   });
+  console.log(response, "Response");
+  
 
   if (!response.ok) {
     const errorBody: CoinGeckoErrorBody = await response.json().catch(() => ({}));
